@@ -14,8 +14,15 @@ if you are not influenced by this censorship, you should get invalid cert error 
 but if you are influenced, your request will be dropped.
 
 ## OK, How can I run it?
+### Compile and Run it by yourself
 First, install some dependencies by `npm install`,  
 Then, start the script via command `npm start`
+
+### Create a precompiled program by yourself
+install `pkg` from npm and run `pkg .`
+
+### Use Precompiled Program
+[Go to Releases](https://github.com/Alex4386/KR-censorship-190211/releases) to download precompiled binary. (Windows, macOS, Linux for x64 Systems only)
 
 ## Technologies used
 * [Typescript](https://typescriptlang.org), JavaScript that scales!
