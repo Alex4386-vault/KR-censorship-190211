@@ -1,0 +1,36 @@
+{
+  "name": "krcensor-190211",
+  "version": "0.0.1",
+  "description": "check your network was influenced by servername based censorship deployed at KT on 2019-02-11",
+  "main": "lib/index.js",
+  "dependencies": {
+    "@types/request": "^2.48.1",
+    "request": "^2.88.0",
+    "typescript": "^3.3.3",
+    "util": "^0.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "tsc && node lib/index.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex4386/KR-censorship-190211.git"
+  },
+  "keywords": [
+    "censor",
+    "SNISpoofing",
+    "RepublicOfKorea",
+    "SouthKorea",
+    "TLS",
+    "SSL",
+    "HTTPS"
+  ],
+  "author": "Alex4386",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/Alex4386/KR-censorship-190211/issues"
+  },
+  "homepage": "https://github.com/Alex4386/KR-censorship-190211#readme"
+}

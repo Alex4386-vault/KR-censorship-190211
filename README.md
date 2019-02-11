@@ -1,2 +1,26 @@
 # KR-censorship-190211
 Check your network was influenced by ServerName based censorship deployed at KT on 2019-02-11
+
+## What? Censorship?
+Since today (2019-02-11), KT started to censor the HTTPS traffic with ServerName header (host:)  
+which is usually used in identifying ServerName in VirtualHosts  
+  
+According to the [inspection of ](https://twitter.com/perillamint/status/1085545671506255872)[perillamint](https://github.com/perillamint), 
+KT [is sending TCP RST](https://twitter.com/perillamint/status/1094918736429993984) when it's serverName is in the blocked site list.  
+
+## So what does this script do?
+This script sends a request to google server with fake serverName to trigger blocking system.  
+if you are not influenced by this censorship, you should get invalid cert error from google server since it is not in the certificate alt-name list:  
+but if you are influenced, your request will be dropped.
+
+## OK, How can I run it?
+First, install some dependencies by `npm install`,  
+Then, start the script via command `npm start`
+
+## Technologies used
+* [Typescript](https://typescriptlang.org), JavaScript that scales!
+* [request](https://github.com/request/request), Easy to use http request library
+* [Node.JS](https://nodejs.org), A JavaScript Runtine built on V8 Engine
+
+## License
+WTFPL
