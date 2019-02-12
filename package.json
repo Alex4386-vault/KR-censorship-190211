@@ -10,7 +10,7 @@
     "util": "^0.11.1"
   },
   "bin": {
-    "app":"lib/index.js"
+    "app": "lib/index.js"
   },
   "devDependencies": {},
   "scripts": {
