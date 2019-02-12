@@ -2,8 +2,9 @@
 Check your network was influenced by ServerName based censorship deployed at KT on 2019-02-11
 
 ## What? Censorship?
-Since today (2019-02-11), KT started to censor the HTTPS traffic with ServerName header (host:)  
-which is usually used in identifying ServerName in VirtualHosts  
+Since 2019-02-11, KT started to censor the HTTPS traffic with ServerName header (host:) which is usually used in identifying ServerName in VirtualHosts    
+Since 2019-02-12, Korea Communications Commission openly admitted that they will censor the HTTPS traffic. [Official Tweet from KCC](https://twitter.com/withkcc/status/1095183792057200645)
+This software is for detecting any censoring system by sending a HTTPS request to [google.com](https://google.com) with modified servername in ServerHello Request or host header
   
 According to the [inspection of ](https://twitter.com/perillamint/status/1085545671506255872)[perillamint](https://github.com/perillamint), 
 KT [is sending TCP RST](https://twitter.com/perillamint/status/1094918736429993984) when it's serverName is in the blocked site list.  
