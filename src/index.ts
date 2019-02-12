@@ -6,7 +6,7 @@ let spoofTo:string[] =
 [
     "hitomi.la",
     "pornhub.com",
-    "e-hentai.com"
+    "e-hentai.org"
 ];
 
 var isCensored:boolean = false;
