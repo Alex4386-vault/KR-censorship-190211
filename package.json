@@ -1,6 +1,6 @@
 {
   "name": "krcensor-190211",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "check your network was influenced by servername based censorship deployed at KT on 2019-02-11",
   "main": "lib/index.js",
   "dependencies": {
