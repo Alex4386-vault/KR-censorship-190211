@@ -9,7 +9,8 @@ let spoofTo:string[] =
     "e-hentai.com"
 ];
 
-
+let isCensored:boolean = false;
+let a = 0;
 
 // request
 spoofTo.forEach((blocked) => {
@@ -28,12 +29,13 @@ spoofTo.forEach((blocked) => {
             if (err !== undefined) {
                 if (err.reason !== undefined) {
                     if (err.reason.includes("is not in the cert\'s altnames:")) {
-                        console.log(blocked+" is OK, It is not blocked, Enjoy your internet");
+                        console.log(blocked+" is OK");
                     } else if (err.code === "ECONNRESET") {
-                        console.log(blocked+" is being censored. use VPN if you can.");
+                        console.log(blocked+" is being censored.");
+                        isCensored = true;
                     }
                 } else if (err.code === "ECONNRESET") {
-                    console.log(blocked+" is being censored. use VPN if you can.");
+                    console.log(blocked+" is being censored.");
                 } else {
                     console.error("This is something which should not happen or the censor logic was changed.");
                     console.error("Please Report this bug to github.");
@@ -42,4 +44,20 @@ spoofTo.forEach((blocked) => {
             }
         }
     );
+    
+    a++;
+    if(a === blocked.length) {
+        checkBlocked();
+    }
+
 });
+
+function checkBlocked():void {
+    if (isCensored) {
+        console.log("Your network is currently CENSORED! Please USE VPN to protect your privacy from government supervision!");
+        console.log("이 네트워크는 검열 되어있습니다! VPN사용을 적극 권장합니다!");
+    } else {
+        console.log("이 네트워크는 검열 되어있지 않습니다! ");
+        console.log("This network is not censored, Enjoy your internet life.");
+    }
+}
