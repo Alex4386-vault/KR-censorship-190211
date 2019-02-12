@@ -9,8 +9,18 @@ let spoofTo:string[] =
     "e-hentai.com"
 ];
 
-let isCensored:boolean = false;
-let a = 0;
+var isCensored:boolean = false;
+var a = 0;
+
+function checkBlocked():void {
+    if (isCensored) {
+        console.log("Your network is currently CENSORED! Please USE VPN to protect your privacy from government supervision!");
+        console.log("이 네트워크는 검열 되어있습니다! VPN사용을 적극 권장합니다!");
+    } else {
+        console.log("이 네트워크는 검열 되어있지 않습니다! ");
+        console.log("This network is not censored, Enjoy your internet life.");
+    }
+}
 
 // request
 spoofTo.forEach((blocked) => {
@@ -26,6 +36,8 @@ spoofTo.forEach((blocked) => {
 
     request(options,
         (err, res, body) => {
+            a++;
+
             if (err !== undefined) {
                 if (err.reason !== undefined) {
                     if (err.reason.includes("is not in the cert\'s altnames:")) {
@@ -36,28 +48,20 @@ spoofTo.forEach((blocked) => {
                     }
                 } else if (err.code === "ECONNRESET") {
                     console.log(blocked+" is being censored.");
+                    isCensored = true;
                 } else {
                     console.error("This is something which should not happen or the censor logic was changed.");
                     console.error("Please Report this bug to github.");
                     console.error("https://github.com/Alex4386/KR-censorship-190211");
                 }
             }
+
+            if(a === spoofTo.length) {
+                console.log("");
+                console.log("Result:");
+                checkBlocked();
+            }
         }
     );
-    
-    a++;
-    if(a === blocked.length) {
-        checkBlocked();
-    }
-
 });
 
-function checkBlocked():void {
-    if (isCensored) {
-        console.log("Your network is currently CENSORED! Please USE VPN to protect your privacy from government supervision!");
-        console.log("이 네트워크는 검열 되어있습니다! VPN사용을 적극 권장합니다!");
-    } else {
-        console.log("이 네트워크는 검열 되어있지 않습니다! ");
-        console.log("This network is not censored, Enjoy your internet life.");
-    }
-}
