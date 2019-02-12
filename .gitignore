@@ -1,3 +1,5 @@
 node_modules/
 lib/
 krcensor-190211-*
+.idea/
+firebase/
