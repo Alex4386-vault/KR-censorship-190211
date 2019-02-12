@@ -18,7 +18,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "tsc && node lib/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "build-release": "tsc && pkg . --target node10-linux-x86,node10-linux-x64,node10-macos-x64,node10-win-x86,node10-win-x64"
   },
   "repository": {
     "type": "git",
