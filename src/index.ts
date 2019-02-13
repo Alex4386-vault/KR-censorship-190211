@@ -2,14 +2,17 @@ import request from "request";
 import util from "util";
 
 import {domains, getDomains} from "./domains";
-import {lang} from './lang'
+import {getLangText, Language} from './lang'
 
-Promise.race([
-    getDomains(),
-    new Promise(resolve => setTimeout(() => {
-        resolve(domains)
-    }, 5000))
-]).then((spoofTo: string[]) => {
+getLangText().then((lang) => {
+    return Promise.all([Promise.race([
+        getDomains(),
+        new Promise(resolve => setTimeout(() => {
+            resolve(domains)
+        }, 5000))
+    ]),
+        new Promise(resolve => resolve(lang))])
+}).then(([spoofTo, lang]: [string[], Language]) => {
     return new Promise((resolve, reject) => {
         let numOfChecked = 0;
         let isCensored: boolean = false;
@@ -41,18 +44,19 @@ Promise.race([
                     }
 
                     if (numOfChecked === spoofTo.length) {
-                        resolve(isCensored)
+                        resolve([isCensored, lang])
                     }
                 }
             );
         });
     });
-}).then((isCensored: boolean) => {
+}).then(([isCensored, lang]: [boolean, Language]) => {
     console.log(lang.result(isCensored));
-    return {result: true};
+    return [{result: true}, lang];
 }).catch((err) => {
-    console.log(lang.error());
     return {result: false, error: err};
-}).then((result: { result: boolean, error?: Error }) => {
+}).then(([result, lang]: [{ result: boolean, error?: Error }, Language]) => {
+    if (!result)
+        console.log(lang.error());
     process.exit(result.result ? 0 : 1)
 });
