@@ -1,5 +1,5 @@
 export const reqToBlocked = (blocked: string): string =>
-    `${blocked}에 요청중...`;
+    `google.com에 서버이름을 ${blocked}로 변경해 요청중...`;
 
 export const notCensored = (blocked: string): string =>
     `${blocked}은(는) 검열되고 있지 않습니다`;
