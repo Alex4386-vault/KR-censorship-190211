@@ -11,7 +11,7 @@ export const result = (isCensored: boolean): string =>
     `\nResult :\n` +
     `${isCensored ?
         `Your network is currently CENSORED!\n` +
-        `Please USE VPN to protect your privacy from government supervision!` :
+        `Please USE VPN THAT LOCATED OUT OF KOREA to protect your privacy from government supervision!` :
         `This network is not censored.\n` +
         `Enjoy your internet life.`}`;
 
